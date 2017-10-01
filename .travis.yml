@@ -9,4 +9,8 @@ script:
 - >
   docker run wtanaka/ubuntu-1604-oracle-java-8 sh -c "apt-get update && apt-get install less"
 after_success:
-- curl https://registry.hub.docker.com/u/wtanaka/ubuntu-1604-oracle-java-8/trigger/d2563ab7-e4fc-455a-bfcf-3f40ee0b883e/
+- >
+  curl -H "Content-Type: application/json"
+  --data '{"source_type": "Branch", "source_name": "master"}'
+  -X POST
+  https://registry.hub.docker.com/u/wtanaka/ubuntu-1604-oracle-java-8/trigger/d2563ab7-e4fc-455a-bfcf-3f40ee0b883e/
